@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Tabajo en clase</title>
+</head>
+<body>
+    Primero: <input type="number" id="numeroInicial" name="primerNumero">
+    <br>
+    Segundo: <input type="number" id="numeroFinal" name="segundoNumero">
+    <br>
+    Maximo: <input type="number" id="maximo" name="maximo">
+    <br>
+    <input type="button" id="btnGenerar" value="Generar">
+    <br>
+    <!--<input type="button" id="btnCrear" value="Crear">-->
+    <br>
+    <input type="button" value="Par" id="btnpar">
+                <br>
+                <input type="button" value="Impar" id="btnimpares">
+                
+    <h1>_____________________________________________________________________</h1>
+    <table id="fibonacci1" border="2" class="table table-sm">
+        
+        <thead>
+            <th>serie Fibonacci</th>
+        </thead>
+        <tbody id="serieFibonacci">
+
+        </tbody>
+    </table>
+    <table id="fibonacci2" border="2">
+            <thead>
+                <th></th>
+            </thead>
+            <tbody id="serieFibonacci1">   
+            </tbody>
+    </table>
+    <table id="fibonacci3" border="2">
+            <thead>
+                <th></th>
+            </thead>
+            <tbody id="serieFibonacci2">   
+            </tbody>
+    </table>
+    <table id="fibonacci4" border="2">
+            <thead>
+                <th></th>
+            </thead>
+            <tbody id="serieFibonacci3">   
+            </tbody>
+    </table>
+</body>
+<script>
+        var index=0
+        var seriefibo=document.getElementById("serieFibonacci");
+document.getElementById("btnGenerar").addEventListener("click",function mostrar(){
+    divFibo.style.display="block"       
+        if(index>serie.length-1){
+            return 0;
+        }else{
+            var fila=document.createElement("tr")
+            var fila1=document.createElement("tr")
+            var fila2=document.createElement("tr")
+            var columna=document.createElement("td")
+            var columna1=document.createElement("td")
+            var columna2=document.createElement("td")
+            columna.appendChild( document.createTextNode(serie[index]))
+            columna1.appendChild( document.createTextNode(serie[index+1]))
+            columna2.appendChild( document.createTextNode(serie[index+2]))
+            fila.appendChild(columna)
+            fila.appendChild(columna1)
+            fila.appendChild(columna2)
+            seriefibo.appendChild(fila)
+            seriefibo.appendChild(fila1)
+            seriefibo.appendChild(fila2)
+            index+=3
+            mostrar(index)
+        }
+})
+</script>
+<script>
+var serie=[]
+class solver{
+    constructor(primerNumero,segundoNumero,maximo){
+        this.primerNumero=primerNumero;
+        this.segundoNumero=segundoNumero;
+        this.maximo=maximo;      
+    }  
+}
+</script>
+<script>
+document.getElementById("btnGenerar").addEventListener("click",function(){
+var maximo1=(document.getElementById("maximo").value);
+var n1= (document.getElementById("numeroInicial").value);
+var n2= (document.getElementById("numeroFinal").value);
+serie.push(parseInt(n1),parseInt(n2))
+function fibonacci (nu1,nu2){
+    if(nu1+nu2>maximo1){
+        return serie;
+    }else{
+        nuevoNumero=nu1+nu2       
+        serie.push(nuevoNumero)
+    return fibonacci(nu2,nuevoNumero)
+    }  
+}
+console.log(fibonacci(serie[0],serie[1]))
+})
+
+</script>
+
+<script>
+    //divisiones
+var divFibo=document.getElementById("fibonacci1")
+var divFibo1=document.getElementById("fibonacci2")
+var divFibo2=document.getElementById("fibonacci3")
+var divFibo3=document.getElementById("fibonacci4")
+//ocultar divisiones
+divFibo.style.display="none"
+divFibo1.style.display="none"
+divFibo2.style.display="none"
+divFibo3.style.display="none"
+</script>
+<script>
+function Solver(primero, segundo, maximo) {
+            this.primero = primero;
+            this.segundo = segundo;
+            this.maximo = maximo;
+            this.serie = [];    // crea un array sin definir tu tama?o
+            this.generar = generar;
+            function generar() {
+                this.serie=[];
+                this.serie.push(this.primero)  // push es un m?todo que sirve para a?adir elementos a un array en este caso al array "serie"
+                this.serie.push(this.segundo);
+            }
+        }
+        var listaTodos = []; // aqu? crea otro array con el fin  de guardar el resultado del otro array
+        var listaPares=[];
+        var listaImpares=[];
+        var par=function(num){
+     if(num%2===0){
+         return true;
+      
+     }
+     else false;
+    }
+        var generadorFibonacci = function (anterior, ultimo) {
+            if (anterior + ultimo > maximoValorSerie) {   // aqu? valida para que no el valor m?ximo de la serie no pueda ser mayor que la 
+                return listaTodos;                   // suma del anterior y el ultimo as? que tambi?n podr?a ir  >= "mayor igua
+            } else {
+                nuevo = anterior + ultimo;
+                if(par(nuevo)){
+                    listaPares.push(nuevo)
+                }else{
+                    listaImpares.push(nuevo)
+                }   // aqu? ya esta realizando la opetacion de 1+1+2+3+5
+                listaTodos.push(nuevo);    // aqu? ya esta realizando la opetacion de 1+1+2+3+5
+                return generadorFibonacci(ultimo, nuevo);  // aqu? retorna el m?todo con sus dos parametros que son obligatorios por que fueron definidos as?
+            }
+        }
+        listaPares.push(2)
+        listaImpares.push(1)
+        /* con el "getElementById" hace refencia al bot?n "botonSolver" l?nea 31 con el fin de 
+          a?adir un evento el EventListener que reacciona cuando se da click y activa la funci?n*/
+        document.getElementById("btnSolver").addEventListener("click", function () {
+            primerFibo = parseInt(document.getElementById("num1").value);   //aqu? de igual maneta captura mediente el id puesto en el html los valores ingresados por el etiquete <input>
+            segundoFibo = parseInt(document.getElementById("num2").value);
+            maximoValorSerie = parseInt(document.getElementById("maximo").value);
+            listaTodos.push(primerFibo);  // a?ade los nuevos valores al array "listaTodos"
+            listaTodos.push(segundoFibo);
+            generadorFibonacci(primerFibo, segundoFibo);
+        }
+        );
+        var tabla = document.getElementById("tbody");   //toma el valor del "tbody" l?nea 37
+        document.getElementById("btnTabla").addEventListener("click", function () {
+            // divta.style.display = "block"
+            for (var i = 0; i < listaTodos.length; i++) {  // recorre al array con un for
+                var tr = document.createElement("tr" + "td" + "td")   // mediante "createElement" crea la etiqueta "tr" y "td"
+                var td = document.createElement("td")
+            
+                td.appendChild(document.createTextNode(listaTodos[i]));  // en esta l?nea agrega el elemento "i" al array "listaTodos" que serian todos los n?meros generados especificados con el n?mero "m?ximo"
+              
+                tr.appendChild(td);    // aqu? a?ada cada elemente td creado 
+              
+                tabla.appendChild(tr)  // y aqu? el tr
+            }
+        })
+
+        //toma el valor del "tbody" l?nea 37
+        document.getElementById("btnpar").addEventListener("click", function () {
+            // divta.style.display = "block"
+            for (var i = 0; i < listaPares.length; i++) {  // recorre al array con un for
+                var tr = document.createElement("tr" + "td" + "td")   // mediante "createElement" crea la etiqueta "tr" y "td"
+                var td = document.createElement("td")
+            
+                td.appendChild(document.createTextNode(listaPares[i]));  // en esta l?nea agrega el elemento "i" al array "listaTodos" que serian todos los n?meros generados especificados con el n?mero "m?ximo"
+              
+                tr.appendChild(td);    // aqu? a?ada cada elemente td creado 
+              
+                tabla.appendChild(tr)  // y aqu? el tr
+            }
+        })
+        document.getElementById("btnimpares").addEventListener("click", function () {
+            // divta.style.display = "block"
+            for (var i = 0; i < listaImpares.length; i++) {  // recorre al array con un for
+                var tr = document.createElement("tr" + "td" + "td")   // mediante "createElement" crea la etiqueta "tr" y "td"
+                var td = document.createElement("td")
+            
+                td.appendChild(document.createTextNode(listaImpares[i]));  // en esta l?nea agrega el elemento "i" al array "listaTodos" que serian todos los n?meros generados especificados con el n?mero "m?ximo"
+              
+                tr.appendChild(td);    // aqu? a?ada cada elemente td creado 
+              
+                tabla.appendChild(tr)  // y aqu? el tr
+            }
+        })
+        var tabla = document.getElementById("tbody");   //toma el valor del "tbody" l?nea 37
+        document.getElementById("btnTabla").addEventListener("click", function () {
+            // divta.style.display = "block"
+            for (var i = 0; i < listaTodos.length; i++) {  // recorre al array con un for
+                var tr = document.createElement("tr" + "td" + "td")   // mediante "createElement" crea la etiqueta "tr" y "td"
+                var td = document.createElement("td")
+            
+                td.appendChild(document.createTextNode(listaTodos[i]));  // en esta l?nea agrega el elemento "i" al array "listaTodos" que serian todos los n?meros generados especificados con el n?mero "m?ximo"
+              
+                tr.appendChild(td);    // aqu? a?ada cada elemente td creado 
+              
+                tabla.appendChild(tr)  // y aqu? el tr
+            }
+        })
+
+        //toma el valor del "tbody" l?nea 37
+        document.getElementById("btnpar").addEventListener("click", function () {
+            // divta.style.display = "block"
+            for (var i = 0; i < listaPares.length; i++) {  // recorre al array con un for
+                var tr = document.createElement("tr" + "td" + "td")   // mediante "createElement" crea la etiqueta "tr" y "td"
+                var td = document.createElement("td")
+            
+                td.appendChild(document.createTextNode(listaPares[i]));  // en esta l?nea agrega el elemento "i" al array "listaTodos" que serian todos los n?meros generados especificados con el n?mero "m?ximo"
+              
+                tr.appendChild(td);    // aqu? a?ada cada elemente td creado 
+              
+                tabla.appendChild(tr)  // y aqu? el tr
+            }
+        })
+        document.getElementById("btnimpares").addEventListener("click", function () {
+            // divta.style.display = "block"
+            for (var i = 0; i < listaImpares.length; i++) {  // recorre al array con un for
+                var tr = document.createElement("tr" + "td" + "td")   // mediante "createElement" crea la etiqueta "tr" y "td"
+                var td = document.createElement("td")
+            
+                td.appendChild(document.createTextNode(listaImpares[i]));  // en esta l?nea agrega el elemento "i" al array "listaTodos" que serian todos los n?meros generados especificados con el n?mero "m?ximo"
+              
+                tr.appendChild(td);    // aqu? a?ada cada elemente td creado 
+              
+                tabla.appendChild(tr)  // y aqu? el tr
+            }
+        })
+
+
+        </script>
+</html>
